@@ -38,7 +38,7 @@
 \newif\ifsustech@master
 \newif\ifsustech@doctor
 \sustech@validate@key{degree}
-\LoadClass[a4paper,UTF8,scheme=chinese,zihao=-4]{ctexart}
+\LoadClass[a4paper,UTF8,scheme=plain,zihao=-4]{ctexart}
 \ifsustech@master
   \ClassError{sustechthesis}{NotImplementedError}
 \fi
@@ -72,6 +72,7 @@
 \RequirePackage{titlesec}
 \titlespacing{\section}{0pt}{1.2ex plus .0ex minus .0ex}{.3ex plus .0ex}
 \titlespacing{\subsection}{0pt}{1.2ex plus .0ex minus .0ex}{.3ex plus .0ex}
+\titlespacing{\subsubsection}{0pt}{1.2ex plus .0ex minus .0ex}{.3ex plus .0ex}
 
 \RequirePackage{geometry}
   \geometry{a4paper,top=27mm,bottom=31mm,left=25mm,right=25mm,bindingoffset=5mm}
@@ -134,7 +135,7 @@
 \RequirePackage{caption}
   \renewcommand{\captionfont}{\bfseries\songti\五号} %表题,图题用五号宋体加黑
   \DeclareCaptionLabelSeparator{enspace}{\enspace}
-  \DeclareCaptionLabelFormat{rightBracket}{#2)}
+  \DeclareCaptionLabelFormat{rightBracket}{#2}
   \captionsetup[table]{labelsep=enspace} %表序表题之间没有标点,而是一个空格,默认前缀为表
   \captionsetup[figure]{labelsep=enspace} %图序图题之间没有标点,而是一个空格，默认前缀为图
   \ifsustech@chinese
@@ -463,9 +464,9 @@
 \newcommand{\参考文献}{
   % 或者可以将refname置空, 按照附录的样式修改.
   \phantomsection
-  \addcontentsline{toc}{section}{参考文献}
-  \sectionmark{参考文献}
-  \section*{\centerline{参考文献}}
+  \addcontentsline{toc}{section}{References}
+  \sectionmark{References}
+  \section*{\centerline{References}}
 }
 \ifsustech@chinese
   \AtBeginDocument{%
@@ -488,20 +489,20 @@
 \newcommand{\附录}{
   \phantomsection
   \clearpage
-  \addcontentsline{toc}{section}{附录}
+  \addcontentsline{toc}{section}{Appendix}
   \addtocounter{section}{1}
-  \sectionmark{附录}
+  \sectionmark{Appendix}
   \begin{center}
-    \黑体\三号 附录
+    \黑体\三号 Appendix
   \end{center}
   \appendix
 }
 % 致谢
 \newcommand{\致谢}{
   \phantomsection
-  \addcontentsline{toc}{section}{致谢}
-  \sectionmark{致谢}
-  \section*{\centerline{致谢}}
+  \addcontentsline{toc}{section}{Acknowledgments}
+  \sectionmark{Acknowledgments}
+  \section*{\centerline{Acknowledgments}}
 }
 % 设定元数据
 \ifsustech@chinese

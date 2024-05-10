@@ -2934,3 +2934,22 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">ref.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1" intorder="1">Redmon_2016_CVPR</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">Wu_2006</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">WANG201850</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">Khabarlak_2022</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">Kazemi_2014_CVPR</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">Newell_2016_ECCV</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">Sun_2019_CVPR</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">Dong_2018_CVPR</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">He_2016_CVPR</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">Wu_2023</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">Qi2022YOLO5Face</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">YOLOv7Face</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">YOLOv8Face</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">KumarMondal2021</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">KumarMondal2021</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">KumarMondal2021</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">Kalman1960</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">KumarMondal2021</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">Khabarlak_2022</bcf:citekey>

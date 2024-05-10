@@ -239,6 +239,20 @@
   \CJKunderline[thickness=0.5pt]{\makebox[#1]{#2}}%
 }
 
+\newcommand{\fillBlank}{
+  \lipsum[1]
+
+  \lipsum[1]
+
+  \lipsum[1]
+
+  \lipsum[1]
+
+  \lipsum[1]
+  
+  \lipsum[1]
+}
+
 \NewDocumentCommand\sustech@info@item{s o m o m}{%
   {
     % \renewcommand\arraystretch{1.3} % 应该只是对可能会换行的英文 item 生效。

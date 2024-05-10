@@ -3,8 +3,31 @@
 \section {Background}
 Amid the brisk pace of technological evolution, Virtual Reality (VR) has emerged as a focal point due to its capacity to deliver immersive and interactive experiences. Traditional VR frameworks, however, have typically necessitated the use of specialized head-mounted displays (HMDs). This requirement not only circumscribes their practicality but also impacts user comfort and the viability of extended engagement. This report delineates an innovative approach to implementing glasses-free VR, aimed at severing the reliance on conventional HMDs through the adoption of monocular distance measurement and off-axis projection techniques, thus amplifying user accessibility and involvement.
 
-The principal technological underpinnings of this project involve the extraction of facial keypoints (executed via YOLO, You Only Look Once), the determination of facial positions using PnP algorithms, and the employment of a Kalman filter to diminish the effects of keypoint jitter. Through off-axis projection, we successfully render scenes crafted in Unity in a manner that engenders a VR experience devoid of any requisite headgear.
+The principal technological underpinnings of this project involve the extraction of facial  landmarks (executed via YOLO\cite{Redmon_2016_CVPR}), the determination of facial positions using solutions of PnP \cite{Wu_2006} problem, and the employment of a Kalman filter to diminish the effects of keypoint jitter. Through off-axis projection, we successfully render scenes crafted in Unity in a manner that engenders a VR experience devoid of any requisite headgear.
 
 This technology's ingenuity lies in its ability to surmount both the physical and fiscal impediments associated with standard VR modalities, while also facilitating a more organic and intuitive user interaction by meticulously tracking the user’s facial and eye movements. The prospective applications of this methodology are extensive, spanning entertainment and gaming to sectors like education, healthcare, and industrial design, offering an immersive digital milieu accessible without the dependency on supplementary apparatus.
 
+Main contributions of this research are following:
+\begin{itemize}
+    \item A image correction algorithm that can correct image distortion caused by curved screen.
+    \item A monocular head-tracking algorithm that can track the user's head movement with single camera.
+\end{itemize}
+With these algorithms, an immersive VR experience can be achieved without the need of any head-mounted display or depth measurement devices.
 \section {Related Work}
+\subsection{Face  Landmark Detection}
+From early techniques, face landmark is mainly implemented by statistical and simple machine learning methods. The \textbf{Active Shape Model (ASM)}, \textbf{Active Appearance Model (AAM)}, and \textbf{Constrained Local Model (CLM)} \cite{WANG201850} \cite{Khabarlak_2022} are foundational methods that employ statistical models to fit a deformable face mesh, optimized for controlled environments but underperforming in in-the-wild scenarios. Subsequent advancements, such as \textbf{Ensemble of Regression Trees (ERT)} \cite{Kazemi_2014_CVPR} employed by \textbf{dlib}, improved accuracy by using a cascade based on gradient boosting, making it highly efficient for real-time applications despite its limitations with pose variations .
+
+The evolution towards neural network-based approaches has introduced a diverse array of backbones, enhancing the detection capabilities under unconstrained conditions. Techniques such as the \textbf{Hourglass} \cite{Newell_2016_ECCV} and \textbf{HRNet} \cite{Sun_2019_CVPR} architectures leverage heatmap-based methods to improve landmark localization accuracy by predicting probabilistic heatmaps for each landmark . These methods are robust against pose variations and occlusions, crucial for applications requiring high fidelity in dynamic environments.
+\textbf{Style Aggregated Network (SAN)}\cite{Dong_2018_CVPR} employs ResNet-152 \cite{He_2016_CVPR} to handle variability in image styles by stabilizing landmark detection across different photographic conditions, illustrating the importance of adaptive models in diverse real-world applications.
+
+In 2023, Wu et developed \textbf{YuNet}\cite{Wu_2023}, an advanced face detection model specifically engineered for edge computing devices, which emphasizes minimal model size and maximized computational efficiency. The architecture of YuNet incorporates a streamlined feature extraction backbone and a simplified pyramid feature fusion technique, tailored to meet the stringent performance requirements of mobile and embedded systems with limited processing capabilities. This model is distinguished by its ability to deliver high-speed performance with an exceptionally low parameter count, making it particularly well-suited for real-time applications where both speed and accuracy are critical, yet resources are constrained.
+
+With the development of YOLO-series algorithms, it is also used in face landmark detection. Qi et al. (2022) developed \textbf{YOLO5Face}\cite{Qi2022YOLO5Face}, a face detector built upon the YOLOv5 object detection framework. The model incorporates modifications such as a landmark regression head and various optimizations for processing both large and small faces effectively. YOLO5Face is designed to provide robust face detection capabilities across different model sizes, catering to various application requirements from high-performance setups to real-time detection on mobile or embedded devices. The detector achieves state-of-the-art performance on the WiderFace dataset, demonstrating its efficiency and accuracy in diverse conditions. In following two years, YOLOv7-face\cite{YOLOv7Face} and YOLOv8-face\cite{YOLOv8Face} is developed, which further improve the performance of face detection and landmark detection.
+
+\subsection{Target Tracking}
+During these decades, target traking problem has gains lots of attetion in academic and industrial firld due to the universality of application. With sensor information stream input, tracking algorithms estimate target's motion state, applicated them in next-timestamp's pose estimation. Early tracking algorithms mainly based on 
+
+
+
+\nocite{Khabarlak_2022}
+

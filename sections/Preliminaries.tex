@@ -1,0 +1,77 @@
+\part{Preliminaries and Motivation}
+
+\section {Preliminaries}
+This section introduces the basic concepts and technologies used in this project, including face landmark detection, Perspective-N-Point (PnP) problem, Kalman Filter, Perspective Projection and Off-axis Perspective Projection. We will introduce YuNet in section 3.1, and review the PnP problem in section 3.2. In section 3.3, we will introduce the Kalman Filter, including a simple derivation. In section 3.4, we will introduce the perspective projection and off-axis perspective projection, and explain why off-axis perspective projection is needed in our research.
+\subsection{Face landmark detection}
+Face landmark detection is one of the main tasks in computer vision. It is used to detect the key points of a face, such as the eyes, nose, and mouth. These key points can be used for various applications, such as face recognition, emotion detection, and head pose estimation. There are many different methods for face landmark detection, including traditional computer vision techniques and deep learning-based approaches. In this project, we will use a deep learning-based approach for face landmark detection, as YuNet provided in Sec2.2. OpenCV 4.5.4\cite{opencv_4_5_4} introduced YuNet in 2021 as one of face landmark detection API, which provide a fast and convinience way to complete face landmark detection task. In addition, a research compare YuNet a with traditional haar cascade detection in dlib, and YuNet performs better in both performance and accuracy. \cite{chen2022opencv}.
+
+\subsection{Perspective-N-Point (PnP) Problem}
+Perspective-N-Point (PnP) problem is a fundamental problem in computer vision, which is used to estimate the pose of a camera given a set of 3D points and their corresponding 2D projections. The PnP problem is commonly used in applications such as augmented reality, camera calibration, and robot localization. There are many different algorithms for solving the PnP problem, including the Direct Linear Transform (DLT) method, the Levenberg-Marquardt algorithm, and the RANSAC algorithm. 
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{example-image-a}
+    \caption{Perspective-N-Point(PnP) Problem}\label{F:test-a}
+\end{figure}
+
+
+\subsection{Kalman Filter}
+Kalman Filter is a specific type of recursive Bayesian filter, which is used to estimate the state of a linear dynamic system from a series of noisy measurements. As a varietas of Bayesian filter, Kalman filter combain the prior knowledge of the system with the current measurement to provide an optimal estimate of the state of the system by a self-adjusting kalman gain $K$. 
+
+The Kalman Filter is based on a linear dynamical system model, based on following elements:
+\begin{itemize}
+    \item State Vector $x_k$: State to be estimated of the  system.
+    \item Measurement Vector $z_k$: Variable can be measured by sensors of the system. Note the measurement is noisy.
+    \item State Transition Matrix $F_k$: State transition matrix, which describe the state transition of the system from prior state to current state.
+    \item Measurement Matrix $H_k$: Measurement matrix, which describe the mapping from state space to measurement space.
+    \item Process Noise Covariance Matrix $Q_k$: Covariance matrix of the process noise.
+    \item Measurement Noise Covariance Matrix $R_k$: Covariance matrix of the measurement noise.
+    \item Kalman Gain $K_k$: Gain of the Kalman filter, which is used to adjust the weight of the prior state and the measurement.
+    \item State Covariance Matrix $P_k$: Covariance matrix of the prior state.
+\end{itemize}
+
+The Kalman Filter consists of two main steps: the prediction step and the update step. In the prediction step, filter predict the state of the system based on the prior state and the state transition matrix and update prior state covariance P:
+\begin{equation}
+    \begin{aligned}
+        \hat{x}_{k|k-1} &= F_k \hat{x}_{k-1|k-1} \\
+        P_{k|k-1} &= F_k P_{k-1|k-1} F_k^T + Q_k
+    \end{aligned}
+\end{equation}
+
+Once the measurement is available, the filter update the state of the system based on the measurement and the measurement matrix:
+\begin{equation}
+    \begin{aligned}
+        K_k &= P_{k|k-1} H_k^T (H_k P_{k|k-1} H_k^T + R_k)^{-1} \\
+        \hat{x}_{k|k} &= \hat{x}_{k|k-1} + K_k(z_k - H_k \hat{x}_{k|k-1}) \\
+        P_{k|k} &= (I - K_k H_k) P_{k|k-1} 
+    \end{aligned}
+\end{equation}
+
+In update step, kalman gain is updated based on the measurement and the prior state covariance, and providing the optimal estimate of the state of the system in next step.
+
+\subsection{Perspective Projection and Off-axis Perspective Projection}
+
+Perspective projection is a common projection method in computer graphics and daily life. It is used to project a 3D point onto a 2D plane, such as a computer screen, a piece of paper or our retina. The perspective projection is based on the pinhole camera model, which assumes that light rays travel in straight lines from the object to the camera(Figure 1). 
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{example-image-a}
+    \caption{Perspective projection and pinhole camera model}\label{F:test-a}
+\end{figure}
+
+However, perepective projection assumes that the camera is always facing the view plane directly, which is not always the case in real life. In some cases, the camera may be facing the view plane at an angle(Figure 1). To provide a more realistic view of the scene, off-axis perspective projection is proposed\cite{off-axis}\cite{Kooima2011GeneralizedPP}. By assuming the camera is facing the view plane at an angle, off-axis perspective projection calculate axis's angle by the intersection point's 2D coordinate in view plane(Figure), and provide a rotate-include projection matrix to project 3D point to 2D plane.
+Figure 11b shows why off-axis projection is needed. About the situation of our research, actual view plane is user's display monitor, which is not perpendicular to the user's line of sight most of the time.
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[t]{.45\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{example-image-a}
+        \caption{Off-axis projection}\label{F:test-b-sub-a}
+    \end{subfigure}
+    \begin{subfigure}[t]{.45\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{example-image-a}
+        \caption{Why off-axis projection is needed}\label{F:test-b-sub-b}
+    \end{subfigure}
+    \caption{}\label{F:test-b}
+\end{figure}

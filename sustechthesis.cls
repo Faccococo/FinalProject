@@ -473,7 +473,7 @@
           {,}{}
       }
     \end{spacing}
-    \vfill\clearpage}
+    \vfill}
 % 参考文献
 \newcommand{\参考文献}{
   % 或者可以将refname置空, 按照附录的样式修改.

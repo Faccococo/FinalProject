@@ -1,0 +1,108 @@
+\part{Method and Experiment}
+
+\section{Method}
+
+To implemented the proposed system, we divide the system into three main parts: head tracking, 3D effect, and curved display corrention. In Section4.1, we introduce the basic structure of algorithm and the intra-process communication framework used. Section4.2 introduced head tracking part, which is responsible for tracking the user's head movement and providing the user head's position and do filter. Section4.4 introduce methods and details about how to implement 3D effect, including unity simulation part and off-axis projection implementation. Section4.4 introduce the curved display correction, which is responsible for correcting the image distortion on the curved display.
+
+\subsection{Framework}
+System's framework can be devided into two parts in platform level: C++ level and Unity level. C++ level is responsible for head tracking and image correction, and Unity level is responsible for off-axis projection and simulation constructing. The communication between C++ and Unity is based on Robot Operating System 2(ROS2)\cite{ros2} and Unity's ROS2 plugin\cite{ros2forunity}, since ros2 provided a convinience way to both communication and data visualization. Code structure is shown in Figure 12.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{example-image-a}
+    \caption{code structure and working-flow}\label{F:test-a}
+\end{figure}
+
+In detector, we use YuNet\cite{Wu_2023} to detect the user's face and get the face's key points. Then keypoints is sent to pnp solver, which return head's position in camera frame and send to tracker. Tracker node process head's position, applying CV motion model to kalman filter and send result to Unity part. In Unity, we have constructed a simulation environment, which include two position-synchronized cameras. Camera1 to simulate the user's eye, and camera2 a virtual environment rendering camera. Once camera2 finish its rendering, result image will be sent to wrap node, which apply finally image correction and send to display.
+
+\subsection{Head Tracking}
+In head tracking part, we use YuNet\cite{Wu_2023} to detect the user's face and get the face's key points, and applying CV motion model to do filter.
+
+\subsubsection{Detector and Locator}
+OpenCV 4.5.4\cite{opencv_4_5_4} have integrated YuNet as one of face landmark detection function. Network structure of YuNet is shown in Figure 13. 
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{example-image-a}
+    \caption{YuNet network structure, while onnx model can be found at \href{https://github.com/opencv/opencv_zoo/tree/main/models/face_detection_yunet}{OpenCV Model Zoo}}\label{F:test-a}
+\end{figure}
+
+In OpenCV's API, YuNet accept a RGB image as input, and return a n * 14 size matrix, while n is the number of faces detected in the image. For each row, the first 4 elements are the bounding box of the face, and the rest 10 elements are the key points of the face, representing right eye, left eye, nose, right chin and left chin.
+
+% For localization, OpenCV also privide solvePnP() as a pnp solve api. Since solvePnP() function return camera's pose in world frame, we defined face-frame pnp's world frame(Figure 14).
+
+
+
+For localization, OpenCV also provide solvePnP() as a pnp
+ solve api, with input of 3d points(world frame), 2d points(opencv's image frame), camera matrix and distortion matrix as input, output of camera's pose in world frame. Since solvePnP() function return camera's pose in world frame, world frame is defineded same as face-frame. Figure 14 shows the face-frame definition.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{example-image-a}
+    \caption{Face-frame definition}\label{F:test-a}
+\end{figure}
+
+In addition, ePnP is chosen by its low-latency\cite{EPnP_2009}. Also, we've obtained camera's intrinsic matrix and distortion matrix by ros2 camera calibration package\cite{ros2_camera_calibration}, and applicated 3d-keypoints in a sample human head's model from Soheil M. etc(2023)'s work.\cite{soheil2023facial}
+
+\subsubsection{Kalman Filter}
+Consider the general movement of human head, we choose Kalman Filter as our motion model, since the head movement is a linear dynamic system. The state variables can be defined as head's:
+\begin{equation}
+    \begin{aligned}
+        x_k &= \begin{bmatrix} x & y & z & v_x & v_y & v_z \end{bmatrix}^T
+    \end{aligned}
+\end{equation}
+\begin{equation}
+    \begin{aligned}
+        z_k &= \begin{bmatrix} x & y & z \end{bmatrix}^T
+    \end{aligned}
+\end{equation}
+while $x, y, z$ is the position of the head, and $v_x, v_y, v_z$ is the velocity of the head. 
+Consider head's movement as a constant velocity(cv) model, the state transition equations can be defined as:
+\begin{equation}
+    \begin{cases}
+        x' = x + v_{x} \cdot dt \\
+        y' = y + v_{y} \cdot dt \\
+        z' = z + v_{z} \cdot dt 
+    \end{cases}
+\end{equation}
+and observation equations:
+\begin{equation}
+    \begin{cases}
+        x_m = x \\
+        y_m = y \\
+        z_m = z
+    \end{cases}
+\end{equation}
+while $x_m, y_m, z_m$ are variables in measurement space, and $dt$ is the time interval between two frames. 
+.
+In this case, we can generate the state transition matrix $F_k$ and measurement matrix $H_k$ as:
+
+\begin {equation}
+    F_k = \begin{bmatrix} 1 & 0 & 0 & dt & 0 & 0 \\ 0 & 1 & 0 & 0 & dt & 0 \\ 0 & 0 & 1 & 0 & 0 & dt \\ 0 & 0 & 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 & 0 & 1 \end{bmatrix} 
+\end {equation}
+
+\begin {equation}
+    H_k = \begin{bmatrix} 1 & 0 & 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 & 0 & 0 \end{bmatrix}
+\end {equation}
+
+By given the process noise covariance matrix $Q_k$ and measurement noise covariance matrix $R_k$ a proper value, we can apply Kalman Filter to track the head's position.
+
+\subsection{3D Effect}
+\subsubsection{Off-axis Projection}
+
+\subsubsection{Curved Displays Correction}
+
+
+
+\section {Experiment}
+
+\subsection{Measurement of Head Tracking}
+\subsection{Algorithm speed}
+\subsection{Illusion Effects}
+
+
+\subsection{Curved Displays Correction}
+
+\subsection {Experiment}
+
+

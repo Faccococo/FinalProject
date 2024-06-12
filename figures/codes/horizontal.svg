@@ -1,0 +1,42 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <!-- Styles -->
+    <style>
+        .arrow { marker-end: url(#arrowhead); }
+        .textbox { font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+    </style>
+
+    <!-- Arrowhead Marker Definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="black" />
+        </marker>
+    </defs>
+
+    <!-- Boxes -->
+    <rect x="50" y="50" width="200" height="50" fill="lightblue" stroke="black" />
+    <rect x="50" y="200" width="200" height="50" fill="lightblue" stroke="black" />
+    <rect x="300" y="200" width="200" height="50" fill="lightblue" stroke="black" />
+    <rect x="550" y="200" width="200" height="50" fill="lightblue" stroke="black" />
+    <rect x="300" y="350" width="200" height="50" fill="lightblue" stroke="black" />
+
+    <!-- Box Labels -->
+    <text x="150" y="80" class="textbox">Prior knowledge of state</text>
+    <text x="150" y="230" class="textbox">Prediction step</text>
+    <text x="400" y="230" class="textbox">Update step</text>
+    <text x="650" y="230" class="textbox">Measurements</text>
+    <text x="400" y="380" class="textbox">Output estimate of state</text>
+
+    <!-- Arrows -->
+    <line x1="150" y1="100" x2="150" y2="200" class="arrow" />
+    <line x1="250" y1="225" x2="300" y2="225" class="arrow" />
+    <line x1="500" y1="225" x2="550" y2="225" class="arrow" />
+    <line x1="450" y1="250" x2="450" y2="350" class="arrow" />
+    <line x1="400" y1="400" x2="400" y2="500" class="arrow" />
+    <line x1="250" y1="225" x2="300" y2="250" class="arrow" />
+    <line x1="150" y1="100" x2="200" y2="150" class="arrow" />
+
+    <!-- Loops -->
+    <line x1="150" y1="400" x2="150" y2="450" stroke="black" />
+    <line x1="150" y1="450" x2="400" y2="450" stroke="black" />
+    <line x1="400" y1="450" x2="400" y2="400" stroke="black" />
+</svg>

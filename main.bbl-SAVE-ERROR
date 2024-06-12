@@ -747,6 +747,66 @@
       \field{dateera}{ce}
       \keyw{Kazemi_2014_CVPR}
     \endentry
+    \entry{saberian2014boosting}{article}{}
+      \name{author}{2}{}{%
+        {{hash=d6f54a65e7c46b467f1ddefc196952b7}{%
+           family={Saberian},
+           familyi={S\bibinitperiod},
+           given={Mohammad},
+           giveni={M\bibinitperiod}}}%
+        {{hash=7ff2a42f85d6c39c3a71003825b921e9}{%
+           family={Vasconcelos},
+           familyi={V\bibinitperiod},
+           given={Nuno},
+           giveni={N\bibinitperiod}}}%
+      }
+      \name{namea}{2}{}{%
+        {{hash=d6f54a65e7c46b467f1ddefc196952b7}{%
+           family={Saberian},
+           familyi={S\bibinitperiod},
+           given={Mohammad},
+           giveni={M\bibinitperiod}}}%
+        {{hash=7ff2a42f85d6c39c3a71003825b921e9}{%
+           family={Vasconcelos},
+           familyi={V\bibinitperiod},
+           given={Nuno},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{publisher}{1}{%
+        {JMLR. org}%
+      }
+      \strng{namehash}{8e5fedc954b2abb2df7d6588f324000a}
+      \strng{fullhash}{187f93a5ab3109f62647b8e802fb63fd}
+      \strng{bibnamehash}{187f93a5ab3109f62647b8e802fb63fd}
+      \strng{authorbibnamehash}{187f93a5ab3109f62647b8e802fb63fd}
+      \strng{authornamehash}{8e5fedc954b2abb2df7d6588f324000a}
+      \strng{authorfullhash}{187f93a5ab3109f62647b8e802fb63fd}
+      \strng{nameabibnamehash}{187f93a5ab3109f62647b8e802fb63fd}
+      \strng{nameanamehash}{8e5fedc954b2abb2df7d6588f324000a}
+      \strng{nameafullhash}{187f93a5ab3109f62647b8e802fb63fd}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Machine Learning Research}
+      \field{langid}{english}
+      \field{languageid}{english}
+      \field{lansortorder}{4}
+      \field{number}{1}
+      \field{title}{Boosting algorithms for detector cascade learning}
+      \field{usera}{J}
+      \field{userd}{english}
+      \field{userf}{english}
+      \field{volume}{15}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \field{pages}{2569\bibrangedash 2605}
+      \range{pages}{37}
+      \keyw{saberian2014boosting}
+    \endentry
     \entry{Newell_2016_ECCV}{inproceedings}{}
       \name{author}{3}{}{%
         {{hash=bb652bac10ea4aa0097ac137c60125f9}{%
@@ -1203,8 +1263,8 @@
       \strng{nameabibnamehash}{aae0f27f3fa252f02752dc8629c7f0b7}
       \strng{nameanamehash}{41b9599018eee203377f656926250774}
       \strng{nameafullhash}{3bc7f97eee8191c08b3a8ecc20cb34cd}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{In this paper, we extend the YOLOv5 object detection framework to develop YOLO5Face, a robust face detector with landmark regression capabilities. We introduce modifications tailored for detecting faces of various sizes and conditions, achieving state-of-the-art performance on the WiderFace dataset. Our model is designed to operate efficiently on both high-performance systems and embedded or mobile devices.}
@@ -1568,8 +1628,8 @@
       \strng{nameabibnamehash}{28773b192aefb3555440671fe8536f6c}
       \strng{nameanamehash}{2a5fffe937e0d6b539227e34051b5283}
       \strng{nameafullhash}{28773b192aefb3555440671fe8536f6c}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://opencv.org/}}
@@ -1634,6 +1694,55 @@
       \verb https://opencv.org/blog/opencv-face-detection-cascade-classifier-vs-yunet/
       \endverb
       \keyw{chen2022opencv}
+    \endentry
+    \entry{ahn_opengl_projection_matrix}{online}{}
+      \name{author}{1}{}{%
+        {{hash=14b3ac486e929b66bc7d415fb6c9db23}{%
+           family={Ahn},
+           familyi={A\bibinitperiod},
+           given={Song\bibnamedelima Ho},
+           giveni={S\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \name{namea}{1}{}{%
+        {{hash=14b3ac486e929b66bc7d415fb6c9db23}{%
+           family={Ahn},
+           familyi={A\bibinitperiod},
+           given={Song\bibnamedelima Ho},
+           giveni={S\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \strng{namehash}{14b3ac486e929b66bc7d415fb6c9db23}
+      \strng{fullhash}{14b3ac486e929b66bc7d415fb6c9db23}
+      \strng{bibnamehash}{14b3ac486e929b66bc7d415fb6c9db23}
+      \strng{authorbibnamehash}{14b3ac486e929b66bc7d415fb6c9db23}
+      \strng{authornamehash}{14b3ac486e929b66bc7d415fb6c9db23}
+      \strng{authorfullhash}{14b3ac486e929b66bc7d415fb6c9db23}
+      \strng{nameabibnamehash}{14b3ac486e929b66bc7d415fb6c9db23}
+      \strng{nameanamehash}{14b3ac486e929b66bc7d415fb6c9db23}
+      \strng{nameafullhash}{14b3ac486e929b66bc7d415fb6c9db23}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{languageid}{english}
+      \field{lansortorder}{4}
+      \field{note}{Accessed: 2024-05-16}
+      \field{title}{OpenGL Projection Matrix}
+      \field{usera}{EB}
+      \field{userd}{english}
+      \field{userf}{english}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.songho.ca/opengl/gl_projectionmatrix.html
+      \endverb
+      \verb{url}
+      \verb https://www.songho.ca/opengl/gl_projectionmatrix.html
+      \endverb
+      \keyw{ahn_opengl_projection_matrix}
     \endentry
     \entry{off-axis}{inproceedings}{}
       \name{author}{2}{}{%
@@ -1862,11 +1971,11 @@
       \strng{nameabibnamehash}{da3f2037cc0123c47ff0d1c42d82001f}
       \strng{nameanamehash}{da3f2037cc0123c47ff0d1c42d82001f}
       \strng{nameafullhash}{da3f2037cc0123c47ff0d1c42d82001f}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://github.com/ros-perception/image_pipeline}}
+      \field{howpublished}{\url{https://1.com/ros-perception/image_pipeline}}
       \field{langid}{english}
       \field{languageid}{english}
       \field{lansortorder}{4}
